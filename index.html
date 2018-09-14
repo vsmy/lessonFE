@@ -8,34 +8,48 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <link src="vue.js">
 </head>
 <body>
-
-  
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <ul class="nav nav-pills nav-stacked">
-          <span data-feather="home"></span>
-          <li class="active"><a href="#">Menu</a></li>
-          <li><a href="#">Page 1</a></li>
-          <li><a href="site.html">Page 2</a></li>
-
-        </ul>
-        
-    </div>
-    <ul class="nav navbar-nav">
-       
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="#">Menu 1</a></li>
-      <li><a href="#">Menu 2</a></li>
-      <li><a href="#">Menu 3</a></li>
-    </ul>
-  </div>
-  <div class="animation">|||</div>
-</nav>
-</div>
-
+    
+    <div id="calculator">
+        <div id="display">{{ result }}</div>
+        <div id="pad">
+          <div class="btn" id="clear" v-on:click="clear">C</div>
+          <div class="btn" >/</div>
+          <div class="btn" @click="numbt(7)" >7</div>
+          <div class="btn" >8</div>
+          <div class="btn" >9</div>
+          <div class="btn" >x</div>
+          <div class="btn" >4</div>
+          <div class="btn" >5</div>
+          <div class="btn" >6</div>
+          <div class="btn" >-</div>
+          <div class="btn" >1</div>
+          <div class="btn" >2</div>
+          <div class="btn" >3</div>
+          <div class="btn" >+</div>
+          <div id="zero" class="btn">0</div>
+          <div id="equal" class="btn">=</div>
+        </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+new Vue({
+  el: '#calculator',
+  data: {
+    result: '123',
+  },
+  methods:{
+    clear: function () {
+      this.result = ''; 
+    },
+numbt: function (number){
+  this.result = this.result && number
+}
+  }
+})
+  </script>
+ 
 </body>
 </html>

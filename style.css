@@ -1,27 +1,58 @@
+html{
+  background: rgb(85, 84, 84);
+  font-family: sans-serif;
+}
+  body{ 
+    display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100vh;
+ }
+#calculator{
+  border: 2px solid #222;
+  border-radius: 4px;
+  max-width: 350px;
+  box-shadow: -1px -1px 9px 15px #73b5f7
+}
+#display{
+  font-size: 50px;
+  width: 100%;
+  height: 100px;
+  box-sizing: border-box;
+  display: grid;
+  justify-items: end;
+  align-items: center;
+  border-bottom: 2px solid #222;
+  box-shadow: -1px 9px 15px -3px #000000;
 
-
-.animation{
-  width: 50px;
-height: 50px;
-margin: 30px auto;
-background-color: rgb(60, 57, 255);
-animation-name: spin;
-animation-duration: 2s;
-animation-timing-function: ease-in-out;
-animation-timing-function: linear;
-animation-iteration-count: infinite;
-animation-direction: alternate; 
+}
+#pad{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(60px, 1fr));
+  grid-gap: 10px;
+  padding: 15px;
+}
+.btn{
+  cursor: pointer;
+  font-size: 20px;
+  display: grid;
+  padding: 15px 10px;
+  justify-items: center;
+  align-items: center;
+  color: #FAFAFA;
+  border: 1px solid #222;
+  border-radius: 4px;
+  background: #777;
+  box-shadow: 3px 7px 20px -1px #000000;
 }
 
-@keyframes spin{
-  0% {
-    transform:  translate(-307px,-203px) ;
-  }
-  50% {
-    background-color: chartreuse;
-    transform:  translate(251px,-201px)  ;
-  }
-  100% {
-    transform:  translate(-301px,-201px)  ;
-  }
+#clear{
+  background: steelblue;
+  grid-column: 1/4;
+}
+#zero{
+  grid-column: 1/4;
+}
+#equal{
+  background: seagreen};
 }
