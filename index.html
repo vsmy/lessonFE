@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Test</title>
   <meta charset="utf-8">
@@ -8,66 +9,80 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   <link src="vue.js">
+  <link src="vue.js">
 </head>
+
 <body>
-    
-    <div id="calculator">
-        <div id="display">{{ result }}</div>
-        <div id="pad">
-          <div class="btn" id="clear" v-on:click="clear">C</div>
-          <div class="btn" >/</div>
-          <div class="btn" @click="numbt(7)" >7</div>
-          <div class="btn" @click="numbt(8)">8</div>
-          <div class="btn" @click="numbt(9)">9</div>
-          <div class="btn" >x</div>
-          <div class="btn" @click="numbt(4)">4</div>
-          <div class="btn" @click="numbt(5)">5</div>
-          <div class="btn" @click="numbt(6)">6</div>
-          <div class="btn" >-</div>
-          <div class="btn" @click="numbt(1)">1</div>
-          <div class="btn" @click="numbt(2)">2</div>
-          <div class="btn" @click="numbt(3)">3</div>
-          <div class="btn" @click="plus" >+</div>
-          <div id="zero" class="btn" @click="numbt(0)">0</div>
-          <div id="equal" class="btn" @click="equal">=</div>
-        </div>
-      </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-<script>
-new Vue({
-  el: '#calculator',
-  data: {
-    result: '123',
-    pew: null,
-    op: null,
-    opclick: false
-  },
-  methods:{
-    clear: function () {
-      this.result = ''; 
-    },
-numbt: function (number){
-  if (this.opclick){
-this.result ='';
-this.opclick = false;
-  }
-  this.result = this.result + number
-},
-setPrevious() {
-      this.previous = this.current;
-      this.operatorClicked = true;
-    },
 
-plus: function (){
-  this.op = (a,b) => a * b;
-  this.setPrevious;
-
-},
-equal: function (){}
-  }
-})
+  <div id="calculator">
+    <div id="display">{{ result }}</div>
+    <div id="pad">
+      <div class="btn" id="clear" @click="clear">C</div>
+      <div class="btn" @click="operationClick('/')">/</div>
+      <div class="btn" @click="numbers(7)">7</div>
+      <div class="btn" @click="numbers(8)">8</div>
+      <div class="btn" @click="numbers(9)">9</div>
+      <div class="btn" @click="operationClick('*')">x</div>
+      <div class="btn" @click="numbers(4)">4</div>
+      <div class="btn" @click="numbers(5)">5</div>
+      <div class="btn" @click="numbers(6)">6</div>
+      <div class="btn" @click="operationClick('-')">-</div>
+      <div class="btn" @click="numbers(1)">1</div>
+      <div class="btn" @click="numbers(2)">2</div>
+      <div class="btn" @click="numbers(3)">3</div>
+      <div class="btn" @click="operationClick('+')">+</div>
+      <div id="zero" class="btn" @click="numbers(0)">0</div>
+      <div id="equal" class="btn" @click="calculate()">=</div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#calculator',
+      data: {
+        result: '',
+        firstArg: null,
+        secundArg: null,
+        operation: null
+      },
+      methods: {
+        clear: function () {
+          this.result = '';
+        },
+        numbers: function (number) {
+          this.result = this.result + number;
+        },
+        operationClick: function (operation) {
+          this.firstArg = this.result;
+          this.operation = operation;
+          this.clear();
+        },
+        calculate: function(){
+          //check all needed data preset
+          
+          this.secundArg = this.result;
+          
+          switch (this.operation) {
+            case "+":
+              this.result = parseInt(this.firstArg) + parseInt(this.secundArg);
+            break;
+            case "-":
+            this.result = parseInt(this.firstArg) + parseInt(this.secundArg);
+            break;
+            case "*":
+            this.result = parseInt(this.firstArg) * parseInt(this.secundArg);
+            break;
+            case "/":
+            this.result = parseInt(this.firstArg) / parseInt(this.secundArg);
+            break;
+            default:
+            alert("!!!!");
+              break;
+          }
+        }
+      }
+    })
   </script>
- 
+
 </body>
 </html>
