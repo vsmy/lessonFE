@@ -28,9 +28,9 @@
           <div class="btn" @click="numbt(1)">1</div>
           <div class="btn" @click="numbt(2)">2</div>
           <div class="btn" @click="numbt(3)">3</div>
-          <div class="btn" >+</div>
-          <div id="zero" class="btn">0</div>
-          <div id="equal" class="btn">=</div>
+          <div class="btn" @click="plus" >+</div>
+          <div id="zero" class="btn" @click="numbt(0)">0</div>
+          <div id="equal" class="btn" @click="equal">=</div>
         </div>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -39,14 +39,32 @@ new Vue({
   el: '#calculator',
   data: {
     result: '123',
+    pew: null,
+    op: null,
+    opclick: false
   },
   methods:{
     clear: function () {
       this.result = ''; 
     },
 numbt: function (number){
+  if (this.opclick){
+this.result ='';
+this.opclick = false;
+  }
   this.result = this.result + number
-}
+},
+setPrevious() {
+      this.previous = this.current;
+      this.operatorClicked = true;
+    },
+
+plus: function (){
+  this.op = (a,b) => a * b;
+  this.setPrevious;
+
+},
+equal: function (){}
   }
 })
   </script>
